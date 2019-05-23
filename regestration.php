@@ -4,7 +4,7 @@
  include_once('./common_files/validation/user_validate.php');
  require_once('./common_files/common_functions.php');
  
- if(isset($_POST['submit'])){
+if(isset($_POST['submit'])){
     $validations = new Validations;
 
     $errors = $validations->userValidate($_POST);

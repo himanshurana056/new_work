@@ -4,10 +4,10 @@ include_once('common_files/db_connect.php');
 
 class Validations {
 
-    private function validateEmail($mail) {
+    private function validateEmail($email) {
         $dbConnect = new Dbconnect;
         $conn = $dbConnect->connectDB();
-        $sql = "SELECT * FROM users where email = '$mail'";
+        $sql = "SELECT * FROM users where email = '$email'";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
@@ -78,5 +78,19 @@ public function userValidate($data){
         
             return $errors;
         }
-    
+
+        public function userlogin($info){
+
+
+            if(empty($info['email'])) {
+                $errors['email'] = "You must choose your email";
+            }
+            if(empty($info['password'])) {
+                $errors['password'] = "You must enter your password";
+            }               
+            //echo "<pre>"; print_r($errors); die;
+             return $errors;
+        }   
+
+        
 }
